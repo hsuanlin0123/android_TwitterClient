@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,19 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         ivProfileImage.setBackgroundResource(0);
         tvCreatedAt.setText(tweet.getCreatedAt());
         Picasso.with(getContext()).load(tweet.getUser().getProfileImageUrl()).into(ivProfileImage);
+
+        ivProfileImage.setTag(tweet.getUser().getScreenName());
+        ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView ivProfileImage = (ImageView) view.findViewById(R.id.ivProfileImage);
+                String screenName = (String) ivProfileImage.getTag();
+
+                Intent i = new Intent(getContext(), ProfileActivity.class);
+                i.putExtra("screen_name",screenName);
+                getContext().startActivity(i);
+            }
+        });
 
         return convertView;
     }

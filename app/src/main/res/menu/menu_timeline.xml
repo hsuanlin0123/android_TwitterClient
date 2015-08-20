@@ -8,7 +8,12 @@
         app:showAsAction="ifRoom"
         android:onClick="onClickComposeBtn"
         />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/acion_profile"
+        android:title="profileAction"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"
+        android:onClick="onClickProfileBtn"
+        />
+
 
 </menu>
